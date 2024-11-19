@@ -18,9 +18,9 @@ Unlike the stationary MAB problem, where the rewards for each arm are drawn from
 
 # Value estimation for the two situations
 In stationary environments, one common method to estimate the value of an action is the **Sample-Average Method**, where the value of an action is updated by averaging all observed rewards for that action. This method works well when the environment does not change over time. The update rule of sample average method is:
-$ Q_{n+1} = Q_{n} + \frac{1}{n} \left( R_n - Q_n \right) $
+$Q_{n+1} = Q_{n} + \frac{1}{n} \left( R_n - Q_n \right)$
 However, in nonstationary environments, this method may not perform well because it gives equal weight to all past observations, even if they are outdated. We often use the **Constant Step-Size Method**, which updates the value estimate by giving more weight to recent rewards, allowing it to adapt more quickly to changes in the environment. The update rule of constant step size method is:
-$ Q_{n+1} = Q_n + \alpha \left( R_n - Q_n \right) $
+$Q_{n+1} = Q_n + \alpha \left( R_n - Q_n \right)$
 while $\alpha$ is the step size, aka learning rate.
 
 # Tracking the nonstationary problem
@@ -31,8 +31,7 @@ This equation represents a **weighted average** where recent observations are gi
 If $\alpha$ goes to 0, **the exponential moving average collapses into a markov process**.
 
 $\epsilon-greedy$ is a common strategy used to balance exploration and exploitation, the mechanism is at time $t$, a random action $a_t$ which is sampled from the action set using a uniform distribution of $a_t \sim U\left(0,1\right)$ , traded off by the probability $\epsilon$:
-$
-a_t =
+$a_t =
 \begin{cases}
 \text{random action}, & \text{with probability } \epsilon \\
 \arg\max_{a} Q(s_t, a), & \text{with probability } 1 - \epsilon
