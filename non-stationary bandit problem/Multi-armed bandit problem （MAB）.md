@@ -31,11 +31,7 @@ This equation represents a **weighted average** where recent observations are gi
 If $\alpha$ goes to 0, **the exponential moving average collapses into a markov process**.
 
 $\epsilon-greedy$ is a common strategy used to balance exploration and exploitation, the mechanism is at time $t$, a random action $a_t$ which is sampled from the action set using a uniform distribution of $a_t \sim U\left(0,1\right)$ , traded off by the probability $\epsilon$:
-$a_t =
-\begin{cases}
-\text{random action}, & \text{with probability } \epsilon \\
-\arg\max_{a} Q(s_t, a), & \text{with probability } 1 - \epsilon
-\end{cases}$
+$a_t =\begin{cases}\text{random action}, & \text{with probability } \epsilon \\\arg\max_{a} Q(s_t, a), & \text{with probability } 1 - \epsilon\end{cases}$
 >[!info]
 > If $a_t$ $\lt$  $\epsilon$ do  a random action, so called  exploration
 > if $a_t$ $\geq$  $\epsilon$ do a greedy search, which is called  exploitation
