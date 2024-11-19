@@ -32,7 +32,7 @@ $\epsilon-greedy$ is a common strategy used to balance exploration and exploitat
 ```math
 a_t =\begin{cases}\text{random action}, & \text{with probability } \epsilon \\\arg\max_{a} Q(s_t, a), & \text{with probability } 1 - \epsilon\end{cases}
 ```
->[!info]
+>[!tip]
 > If $a_t$ $\lt$  $\epsilon$ do  a random action, so called  exploration
 > if $a_t$ $\geq$  $\epsilon$ do a greedy search, which is called  exploitation
 > While $\epsilon$ is larger, policy will going to  explore more,  while a smaller $\epsilon$ will lead to more exploitation. $\epsilon$ will starts with high value in normal cases, then  decay over time to encourage more exploitation linearly or exponentially.
