@@ -1,5 +1,3 @@
-#RL #MAB #exploration #exploitation  #non-stationary #sample-avg-method #constant-step-size-method
-
 # Introduction of MAB
 The multi-armed bandit problem is a classic problem in reinforcement learning. Essentially, it is about predicting **how to achieve the maximum reward from multiple systems with different initial states**.
 Assuming you can predict the next state of a particular machine, once you discover the most likely path for a single machine to achieve the maximum reward, how do you balance the maximum reward of a single machine with that of all the slot machines as a whole? This problem then becomes a trade-off between local optimization and global optimization.
