@@ -57,9 +57,9 @@ class Agent:
         self.time += 1
         if self.step_size:  # Constant step-size parameter
             # Q_{n+1} = Q_{n}+ \alpha[R_{n} - Q_{n}]
-            # \alpha: learning rate
             self.q_estimates[action] += self.step_size * (reward - self.q_estimates[action])
         else:  # Sample-average method
+            #  Q_{n+1} = Q_{n} + \frac{1}{n} \left( R_n - Q_n \right)
             self.action_counts[action] += 1
             self.q_estimates[action] += (1 / self.action_counts[action]) * (reward - self.q_estimates[action])
 
