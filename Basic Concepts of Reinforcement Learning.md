@@ -1,9 +1,7 @@
-
->[!tip]
->RL is the study of agents and how they learn by trial and error. It formalizes the idea that rewarding or punishing an agent for its behavior makes it more likely to repeat or forego that behavior in the future.
-
 The main idea of RL is an AGENT is trying to learn how to **BEHAVIOR** in a **GIVEN ENVIRONMENT** for receiving a maximum **CUMULATIVE** **REWARD**, by interacting with it and adjusting its actions based on feedback.
 ![Pasted image 20241101112551](https://github.com/user-attachments/assets/584f1548-c2f3-4bb6-aca9-d49863d2ab64)
+>[!tip]
+>RL is the study of agents and how they learn by trial and error. It formalizes the idea that rewarding or punishing an agent for its behavior makes it more likely to repeat or forego that behavior in the future.
 
 # Terminology
 ## States & Observations
