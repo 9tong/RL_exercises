@@ -7,3 +7,4 @@ some notes of my RL learning, some exercises
 - [x] UCB action selection
   - [x] Compare to others
   - [x] Trying some trainable parameters in AS and UCB methods
+  - [x] Calc the cumulative rewards
