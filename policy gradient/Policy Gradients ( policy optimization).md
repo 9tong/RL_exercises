@@ -2,7 +2,7 @@
 ## The gradient
 Policy gradients are a class of reinforcement learning algorithms that optimize policies by directly computing gradients of expected rewards with respect to policy parameters.  
 1st, we define a **simple objective function representing the expected reward**: 
-$$`J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta} [R(\tau)]`$$
+$`J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta} [R(\tau)]`$
 
 $`J(\pi_\theta)`$ is the reward returned by the policy $`\pi_\theta`$ also denoted as $`\pi_\theta(a | s)`$, and $`\tau`$ represents a trajectory(pair of states and actions) sampled from the policy $`\pi_\theta`$.  $`\theta`$ represents the parameters of the policy. The estimate of the expected reward $`R`$ is cumulative rewards over multiple sampled trajectories. 
 
@@ -27,7 +27,7 @@ Here, $`\nabla_\theta J(\pi_\theta)`$ represents the direction in which the poli
 >[!Tip]
 >The log-likelihood trick simplifies gradient computation by converting the derivative of a probability into the product of the probability and the derivative of its log. This is particularly useful in reinforcement learning, as it allows us to express gradients in terms of expectations, which can be estimated using sampled trajectories.
 > 
->where $N$ is the number of sampled trajectories $\tau_i$. From calculus, the derivative of the natural logarithm is:
+>From calculus, the derivative of the natural logarithm is:
 >
 >$$\frac{d}{dx} \log x = \frac{1}{x}$$
 >
