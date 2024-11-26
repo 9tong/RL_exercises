@@ -1,9 +1,8 @@
-#RL #algo
-
->[!info] RL is the study of agents and how they learn by trial and error. It formalizes the idea that rewarding or punishing an agent for its behavior makes it more likely to repeat or forego that behavior in the future.
-
 The main idea of RL is an AGENT is trying to learn how to **BEHAVIOR** in a **GIVEN ENVIRONMENT** for receiving a maximum **CUMULATIVE** **REWARD**, by interacting with it and adjusting its actions based on feedback.
-![|575](Pasted%20image%2020241101112551.png)
+![Pasted image 20241101112551](https://github.com/user-attachments/assets/584f1548-c2f3-4bb6-aca9-d49863d2ab64)
+>[!tip]
+>RL is the study of agents and how they learn by trial and error. It formalizes the idea that rewarding or punishing an agent for its behavior makes it more likely to repeat or forego that behavior in the future.
+
 # Terminology
 ## States & Observations
 A state in RL represents the complete description of the environment which the agent lives in. There is no information hidden.
@@ -37,25 +36,26 @@ So, the true reward functions should looks like: $R(\tau) = \sum_{t=0}^{T} \gamm
 Value functions estimate how good it is for the agent to be in a particular state (or to perform a particular action in that state) in terms of expected cumulative reward. There are two main types of value functions: the **state-value function** $V(s)$, which gives the expected return starting from state $s$, and the **action-value function** $Q(s, a)$, which gives the expected return starting from state $s$ and taking action $a$.
 State-value function $V(s)$ means: the expected cumulative reward the agent will receive starting from state $s$ and following a particular policy. This function only consider the relation between state and the policy. 
 Similarly, the action-value function $Q(s, a)$ represents the expected cumulative reward starting from state $s$, taking action $a$, and then following a particular policy. This function considers both the state and the action, making it more informative for decision-making compared to the state-value function.
-With a given policy $\pi$ : the state-value function $V^\pi(s)$ and the action-value function $Q^\pi(s, a)$ can be computed as the expected cumulative reward when following policy $\pi$, and the optimal value of the optimal policy could be denoted as: $V^*(s)$ and $Q^*(s, a)$, while,
-- The equation for $V^\pi(s)$ expresses the recursive relationship between the value of a state and the values of subsequent states: $V^{\pi}(s) = \mathbb{E}{\tau \sim \pi}[{R(\tau)\left| s_0 = s\right.}]$. Similarly, the  equation for $Q^\pi(s, a)$ is $Q^{\pi}(s,a) = \mathbb{E}{\tau \sim \pi}[{R(\tau)\left| s_0 = s, a_0 = a\right.}]$.
-- The optimality equation for $V^*(s)$ is $V^*(s) = \max_{\pi} \mathbb{E}_{\tau \sim \pi}[R(\tau) | s_{0}= s]$. Similarly, the optimality equation for $Q^*(s, a)$ is $Q^*(s, a) = \max_{\pi} \mathbb{E}_{\tau \sim \pi}[R(\tau) | s_{0}= s, a_{0}= a]$.
->[!tip] What's the optimal eq for the $Q^*(s, a)$ means? 
->$Q^*(s, a)$  tell you if you are in state $s$ , and you take whatever action  $a$ right now, **how much return** can you expect if you act perfectly from this point on.
->$Q^*$ function is the key point to find the best policy. If agent continue to take actions in the enviroment by following the policy here,  it will maximize the expected cumulative reward.
+With a given policy $\pi$ : the state-value function $V^\pi(s)$ and the action-value function $Q^\pi(s, a)$ can be computed as the expected cumulative reward when following policy $\pi$, and the optimal value of the optimal policy could be denoted as: $`V^*(s)`$ and $`Q^*(s, a)`$, while,
+- The equation for $V^\pi(s)$ expresses the recursive relationship between the value of a state and the values of subsequent states: $V^{\pi}(s) = \mathbb{E}{\tau \sim \pi}[{R(\tau)\left| s_0 = s\right.}]$. Similarly, the  equation for $Q^\pi(s, a)$ is $`Q^{\pi}(s,a) = \mathbb{E}{\tau \sim \pi}[{R(\tau)\left| s_0 = s, a_0 = a\right.}]`$.
+- The optimality equation for $V^*(s)$ is $`V^*(s) = \max_{\pi} \mathbb{E}_{\tau \sim \pi}[R(\tau) | s_{0}= s]`$. Similarly, the optimality equation for $`Q^*(s, a)$ is $Q^*(s, a) = \max_{\pi} \mathbb{E}_{\tau \sim \pi}[R(\tau) | s_{0}= s, a_{0}= a]`$.
+>[!tip]
+>What's the optimal eq for the $`Q^*(s, a)`$ means? 
+>$`Q^*(s, a)`$  tell you if you are in state $`s`$ , and you take whatever action  $`a`$ right now, **how much return** can you expect if you act perfectly from this point on.
+>$`Q^*`$ function is the key point to find the best policy. If agent continue to take actions in the enviroment by following the policy here,  it will maximize the expected cumulative reward.
 
-Another approach is these explaination of $Q$ and $V$ reveal the relationship between  $V^\pi(s)$ and  $Q^\pi(s, a)$:  $$V^\pi(s) = \mathbb{E}_{a \sim \pi(s)}[Q^\pi(s, a)]$$Similarly, the relationship between the optimal state-value function and the optimal action-value function is:
-$$V^*(s) = \max_a Q^*(s, a)$$
-Eq1 indicate the expected value of the action-value function under policy $\pi$ , which equals the state-value function for policy  $\pi$.
+Another approach is these explaination of $Q$ and $V$ reveal the relationship between  $`V^\pi(s)`$ and  $`Q^\pi(s, a)`$:  $`V^\pi(s) = \mathbb{E}_{a \sim \pi(s)}[Q^\pi(s, a)]`$. Similarly, the relationship between the optimal state-value function and the optimal action-value function is:
+$`V^*(s) = \max_a Q^*(s, a)`$
+Eq1 indicate the expected value of the action-value function under policy $`\pi`$ , which equals the state-value function for policy $`\pi$`$.
 Eq2 represent the optimal value of a state is the maximum action-value across all actions, which forms the basis for optimal decision-making (action-taking).
 
 This brings us to the **Bellman equation**, which is a key concept in reinforcement learning: 
 **The value of your starting point is the reward you expect to get from being there, plus the value of wherever you land next.**
 Formally, the Bellman equation for the state-value function is written as:
-$$V^\pi(s) = \mathbb{E}_{a \sim \pi(s)}\left[r(s, a) + \gamma V^\pi(s')\right]$$
+$`V^\pi(s) = \mathbb{E}_{a \sim \pi(s)}\left[r(s, a) + \gamma V^\pi(s')\right]`$
 And for the action-value function:
-$$Q^\pi(s, a) = \mathbb{E}\left[r(s, a) + \gamma Q^\pi(s', a')\right]$$
+$`Q^\pi(s, a) = \mathbb{E}\left[r(s, a) + \gamma Q^\pi(s', a')\right]`$
 ## Advantage Functions
-Advantage functions measure how much better taking a specific action is compared to the average action in a given state. Formally, the advantage function is defined as $A^\pi(s, a) = Q^\pi(s, a) - V^\pi(s)$. It helps in determining whether an action is better or worse than the expected value (average value) of being in that state under policy $\pi$. This is a simple definition.
+Advantage functions measure how much better taking a specific action is compared to the average action in a given state. Formally, the advantage function is defined as $`A^\pi(s, a) = Q^\pi(s, a) - V^\pi(s)`$. It helps in determining whether an action is better or worse than the expected value (average value) of being in that state under policy $\pi$. This is a simple definition.
 
 
