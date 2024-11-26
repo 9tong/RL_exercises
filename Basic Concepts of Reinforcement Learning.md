@@ -38,7 +38,7 @@ State-value function $V(s)$ means: the expected cumulative reward the agent will
 Similarly, the action-value function $Q(s, a)$ represents the expected cumulative reward starting from state $s$, taking action $a$, and then following a particular policy. This function considers both the state and the action, making it more informative for decision-making compared to the state-value function.
 With a given policy $\pi$ : the state-value function $V^\pi(s)$ and the action-value function $Q^\pi(s, a)$ can be computed as the expected cumulative reward when following policy $\pi$, and the optimal value of the optimal policy could be denoted as: $`V^*(s)`$ and $`Q^*(s, a)`$, while,
 - The equation for $V^\pi(s)$ expresses the recursive relationship between the value of a state and the values of subsequent states: $V^{\pi}(s) = \mathbb{E}{\tau \sim \pi}[{R(\tau)\left| s_0 = s\right.}]$. Similarly, the  equation for $Q^\pi(s, a)$ is $`Q^{\pi}(s,a) = \mathbb{E}{\tau \sim \pi}[{R(\tau)\left| s_0 = s, a_0 = a\right.}]`$.
-- The optimality equation for $V^*(s)$ is $`V^*(s) = \max_{\pi} \mathbb{E}_{\tau \sim \pi}[R(\tau) | s_{0}= s]`$. Similarly, the optimality equation for $`Q^*(s, a)$ is $Q^*(s, a) = \max_{\pi} \mathbb{E}_{\tau \sim \pi}[R(\tau) | s_{0}= s, a_{0}= a]`$.
+- The optimality equation for $V^*(s)$ is $`V^*(s) = \max_{\pi} \mathbb{E}_{\tau \sim \pi}[R(\tau) | s_{0}= s]`$. Similarly, the optimality equation for $`Q^*(s, a)`$ is $`Q^*(s, a) = \max_{\pi} \mathbb{E}_{\tau \sim \pi}[R(\tau) | s_{0}= s, a_{0}= a]`$.
 >[!tip]
 >What's the optimal eq for the $`Q^*(s, a)`$ means? 
 >$`Q^*(s, a)`$  tell you if you are in state $`s`$ , and you take whatever action  $`a`$ right now, **how much return** can you expect if you act perfectly from this point on.
