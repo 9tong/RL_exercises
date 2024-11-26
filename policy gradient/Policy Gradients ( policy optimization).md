@@ -3,14 +3,14 @@
 Policy gradients are a class of reinforcement learning algorithms that optimize policies by directly computing gradients of expected rewards with respect to policy parameters.  
 1st, we define a **simple objective function representing the expected reward**: 
 $$J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta} [R(\tau)]$$
-$J(\pi_\theta)$ is the reward returned by the policy $\pi_\theta$ also denoted as $\pi_\theta(a | s)$, and $\tau$ represents a trajectory(pair of states and actions) sampled from the policy $\pi_\theta$.  $\theta$ represents the parameters of the policy. The estimate of the expected reward $R$ is cumulative rewards over multiple sampled trajectories. 
+$`J(\pi_\theta)`$ is the reward returned by the policy $\pi_\theta$ also denoted as $`\pi_\theta(a | s)`$, and $\tau$ represents a trajectory(pair of states and actions) sampled from the policy $\pi_\theta$.  $\theta$ represents the parameters of the policy. The estimate of the expected reward $R$ is cumulative rewards over multiple sampled trajectories. 
 
-2nd, focus on the core idea in RL: let the $J(\pi_\theta)$ moves toward direction to the **maximize cumulative rewards**.  
-Think, if we compute the gradient of $J(\pi_\theta)$ with respect to $\theta$, we can update the policy parameters with **gradient ascent** to improve performance.  
+2nd, focus on the core idea in RL: let the $`J(\pi_\theta)`$ moves toward direction to the **maximize cumulative rewards**.  
+Think, if we compute the gradient of $`J(\pi_\theta)`$ with respect to $`\theta`$, we can update the policy parameters with **gradient ascent** to improve performance.  
 $$
 \theta \leftarrow \theta + \alpha \nabla_\theta J(\pi_\theta)
 $$
-Here, $\nabla_\theta J(\pi_\theta)$ represents the direction in which the policy parameters should be adjusted to increase the expected reward, also called the **policy gradient**. $\alpha$ is the discount parameter (aka learning rate).
+Here, $`\nabla_\theta J(\pi_\theta)`$ represents the direction in which the policy parameters should be adjusted to increase the expected reward, also called the **policy gradient**. $`\alpha`$ is the discount parameter (aka learning rate).
 
 ## How to calc this gradient
 ## Unroll these expressions
@@ -19,9 +19,11 @@ Here, $\nabla_\theta J(\pi_\theta)$ represents the direction in which the policy
 3. $r_t$is not directly dependent on  $\theta$ , it is a function of the trajectory $\tau$ , which is sampled from  $\pi_\theta$ . The dependence of $\nabla_\theta J(\theta)$  on $\theta$  is through the policy  $\pi_\theta$
 4. The trajectory  $\tau$  is sampled with the probability: $P(\tau|\theta) = \rho_0 (s_0) \prod_{t=0}^{T} P(s_{t+1}|s_t, a_t) \pi_{\theta}(a_t |s_t)$, where $\rho_0(s_0)$is the initial state of the distribution, $\pi$is the policy of choosing action $a_t$ in state $s_t$.
 5. Because $J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta} [R(\tau)]$, so,   $J(\pi_\theta) = \int P(\tau | \theta) R(\tau) \, d\tau$
->[!Tip] This integral representation stems from the **definition of expected value** in probability theory. The expectation of a random variable  X  under a probability distribution  P(x)  is: **$$\mathbb{E}[X] = \int P(x) X(x) \, dx$$**
+>[!Tip]
+>This integral representation stems from the **definition of expected value** in probability theory. The expectation of a random variable  X  under a probability distribution  P(x)  is: **$$\mathbb{E}[X] = \int P(x) X(x) \, dx$$**
 6. And, $\nabla_\theta J(\pi_\theta) = \nabla_{\theta}\int P(\tau | \theta) R(\tau) \, d\tau$, by using the trick of log-likelihood derivative , $\nabla_\theta P(\tau | \theta) = P(\tau | \theta) \nabla_\theta \log P(\tau | \theta)$, so, we can rewrite $\nabla_\theta J(\pi_\theta)$ as $\int P(\tau | \theta) R(\tau) \nabla_\theta \log P(\tau | \theta) \, d\tau$.
->[!Tip]  The log-likelihood trick simplifies gradient computation by converting the derivative of a probability into the product of the probability and the derivative of its log. This is particularly useful in reinforcement learning, as it allows us to express gradients in terms of expectations, which can be estimated using sampled trajectories.
+>[!Tip]
+>The log-likelihood trick simplifies gradient computation by converting the derivative of a probability into the product of the probability and the derivative of its log. This is particularly useful in reinforcement learning, as it allows us to express gradients in terms of expectations, which can be estimated using sampled trajectories.
 > 
 where $N$ is the number of sampled trajectories $\tau_i$. From calculus, the derivative of the natural logarithm is:
 $$\frac{d}{dx} \log x = \frac{1}{x}$$
