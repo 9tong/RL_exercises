@@ -81,3 +81,5 @@ Update using gradient ascent:  $`\theta \leftarrow \theta + \alpha \nabla_\theta
 where $`\alpha`$ is the learning rate.
 #### 5. Repeat
 Continue sampling trajectories, computing rewards, and updating $`\theta`$ for a fixed number of episodes.
+![pg](https://github.com/user-attachments/assets/fe5fa039-b823-47d5-b354-ff64ff28a638)
+
