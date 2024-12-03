@@ -14,3 +14,5 @@ some notes of my RL learning, some exercises
   - [x] A2C
   - [x] PPO
   - [x] Comparison
+- [x] Lunar Landing(PPO)
+      
