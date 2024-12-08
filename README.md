@@ -15,4 +15,5 @@ some notes of my RL learning, some exercises
   - [x] PPO
   - [x] Comparison
 - [x] Lunar Landing(PPO)
-      
+- [x] Grid World
+  - [x] Q-learning 
