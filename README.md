@@ -18,3 +18,5 @@ some notes of my RL learning, some exercises
 - [x] Grid World
   - [x] Q-learning 
 - [x] Jack's Car Rental
+- [x] Monte Carlo Method
+  - [x] Estimate PI
