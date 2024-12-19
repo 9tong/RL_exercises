@@ -35,7 +35,7 @@ The state is represented by an 8-dimensional vector:
 A common approach to solving the LunarLander problem is to use reinforcement learning algorithms such as Deep Q-Learning (DQN) or Proximal Policy Optimization (PPO). These algorithms learn a policy by interacting with the environment, optimizing rewards, and improving control over time.
 Note that, the lunar-landing experiment of OpenAI Gym has 2 versions: **discrete** and **continuous** versions.  The main difference lies in the **action space**, where the **discrete version has a finite set of actions**, while the **continuous version allows for a range of continuous control inputs**.
 ## Discrete action space
-Each action corresponds to a fixed thrust $\rho$ value, $\forall \mathbf{a} \ \ \epsilon \ \ \mathbf{A}[none, a_{main}, a_{left}, a_{right}]$,  which makes the problem much easier to solve.
+Each action corresponds to a fixed thrust $v$ value, $\forall \mathbf{a} \ \ \epsilon \ \ \mathbf{A}[none, a_{main}, a_{left}, a_{right}]$,  which makes the problem much easier to solve.
 ## Continuous action space
 Each action corresponds to a scalar value which is sampled from a continuous range, typically between 0 and 1 or -1 and 1, depending on the environment's configuration. Can be represented as: 
 $\mathbf{a} = \mathbf{A}[a_{main}, a_{left}, a_{right}]$, where $a_{main} \sim [0, 1]$, $a_{left}, a_{right} \sim [-1, 1]$
