@@ -96,19 +96,19 @@ To solve the problem, you need to carefully compute the right-hand side of these
    While this looks complicated, many terms vanish because the indicator functions ensure that $i''$ and $j''$ match the computed outcome. In practice, computations are done by enumerating feasible ranges and using efficient precomputed Poisson probabilities. Often, the state space and Poisson probabilities are truncated to avoid infinite sums.
 >[!tip]
 >In Detail:
-> Let $Q1​ \sim Poisson(λ_1​),Q2​ \sim Poisson(λ_2​)$, so $Q1$ and $Q2$ are represented the request for customer rentals at location 1 and location 2.
-> Let  $R1 \sim Poisson(\lambda_{1r}), R2 \sim Poisson(\lambda_{2r})$, so $R1$ and $R2$ represent the returns of cars at location 1 and location 2.
+> Let $`Q1 \sim Poisson(\lambda_1), Q2 \sim Poisson(\lambda_2)`$, so $Q1$ and $Q2$ are represented the request for customer rentals at location 1 and location 2.
+> Let  $`R1 \sim Poisson(\lambda_{1r}), R2 \sim Poisson(\lambda_{2r})`$, so $R1$ and $R2$ represent the returns of cars at location 1 and location 2.
 > 
-> Assuming, $Q1$,$Q2$,$R1$,$R2$ are independent variables.
+> Assuming, $Q1,Q2,R1,R2$ are independent variables.
 > 
 > If next state is : $i'' = i' - \min(i', Q1) + R1$, and  $j'' = j' - \min(j', Q2) + R2$, note that, $\min(j', Q2)$ means the max cars available are the $min$ of $j'$(car right here) and the $Q$(customer demand)
 > 
 > Considering next state is $s' = (i'',j'')$,  we should find the $P(s' | s, a)$ and the initial $s$ is given , $a$ can be sampled, so,
-> 	$P(i'', j'' | s, a) =  \sum_{Q_1=0}^{\infty} \sum_{Q_2=0}^{\infty} \sum_{R_1=0}^{\infty} \sum_{R_2=0}^{\infty} P(Q_1) P(Q_2) P(R_1) P(R_2)$
+> 	$`P(i'', j'' | s, a) =  \sum_{Q_1=0}^{\infty} \sum_{Q_2=0}^{\infty} \sum_{R_1=0}^{\infty} \sum_{R_2=0}^{\infty} P(Q_1) P(Q_2) P(R_1) P(R_2)`$
 > 
-> There exists some paticular state that will never happen,  such as states where the number of cars at either location exceeds the maximum capacity or becomes negative, so add indicator  functions which  enforce next states of $i''$ and $j''$ must follow:  $[i' - \min(i', Q1) + R1] \in [0, 20]$ and  $[j' - \min(j', Q2) + R2] \in [0, 20]$ and $\mathbb{E}[i] + \mathbb{E}[j]=20$
+> There exists some paticular state that will never happen,  such as states where the number of cars at either location exceeds the maximum capacity or becomes negative, so add indicator  functions which  enforce next states of $i''$ and $j''$ must follow:  $`[i' - \min(i', Q1) + R1] \in [0, 20]`$ and  $`[j' - \min(j', Q2) + R2] \in [0, 20]`$ and $`\mathbb{E}[i] + \mathbb{E}[j]=20`$
 > so, the equation at last looks like a little bit complicated:
-> 	$P(i'', j'' | s,a) = \sum_{r_1=0}^{\infty}\sum_{r_2=0}^{\infty}\sum_{q_1=0}^{\infty}\sum_{q_2=0}^{\infty} P(X_1=q_1)P(X_2=q_2)P(Y_1=r_1)P(Y_2=r_2) \cdot \mathbb{I}[i'' = i' - \min(i',q_1) + r_1]\mathbb{I}[j'' = j' - \min(j',q_2) + r_2]$
+> 	$`P(i'', j'' | s,a) = \sum_{r_1=0}^{\infty}\sum_{r_2=0}^{\infty}\sum_{q_1=0}^{\infty}\sum_{q_2=0}^{\infty} P(X_1=q_1)P(X_2=q_2)P(Y_1=r_1)P(Y_2=r_2) \cdot \mathbb{I}[i'' = i' - \min(i',q_1) + r_1]\mathbb{I}[j'' = j' - \min(j',q_2) + r_2]`$
 > 
   
 5. **Putting it All Together:**
@@ -119,12 +119,12 @@ To solve the problem, you need to carefully compute the right-hand side of these
      $Q(s,a) = \sum_{s'} P(s'|s,a)[R(s,a) + \gamma V(s')]$
 
    During **policy evaluation**, given a fixed policy $\pi$, you would do:
-   $V^{(k+1)}(s) = \sum_{a} \pi(a|s) \left\{\sum_{s'} P(s'|s,a) [R(s,a) + \gamma V^{(k)}(s')]\right\}$
+   $`V^{(k+1)}(s) = \sum_{a} \pi(a|s) \left\{\sum_{s'} P(s'|s,a) [R(s,a) + \gamma V^{(k)}(s')]\right\}`$
 
    During **policy improvement**, given the newly computed values $V^{(k+1)}$:
-   $\pi_{\text{new}}(s) = \arg\max_a \sum_{s'} P(s'|s,a)[R(s,a) + \gamma V^{(k+1)}(s')]$
+   $`\pi_{\text{new}}(s) = \arg\max_a \sum_{s'} P(s'|s,a)[R(s,a) + \gamma V^{(k+1)}(s')]`$
 
-   Iterating these two steps (policy evaluation and policy improvement) leads to convergence to the optimal policy $\pi^*$ and optimal value function $V^*$.
+   Iterating these two steps (policy evaluation and policy improvement) leads to convergence to the optimal policy $`\pi^*`$ and optimal value function $`V^*`$.
 
 ## Computational Techniques
 - **Truncation of Poisson Distributions:**  
