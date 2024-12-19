@@ -60,7 +60,7 @@ The "Jack’s Car Rental" problem, as described in Sutton and Barto’s "Reinfor
 ## The Bellman Expectation and Optimality Equations
 For a given policy $\pi$, the state-value function $V^\pi(s)$ must satisfy the Bellman expectation equation:
 $`V^\pi(s) = \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V^\pi(s')]`$
-For the *optimal* policy $\pi^*$ and *optimal* value function $V^*$, we have the Bellman optimality equation:
+For the *optimal* policy $`\pi^*`$ and *optimal* value function $`V^*`$, we have the Bellman optimality equation:
 $`V^*(s) = \max_{a} \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V^*(s')]`$
 ## Computing the Expected Returns and Transitions
 To solve the problem, you need to carefully compute the right-hand side of these equations. Consider a single state-action pair $(s, a)$:
