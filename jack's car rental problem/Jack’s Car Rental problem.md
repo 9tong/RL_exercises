@@ -27,11 +27,11 @@ Jack’s Car Rental is a pedagogical example that:
 X-axis: Number of cars at Location A.
 Y-axis: Number of cars at Location B.
 Z-axis: The action (number of cars moved) for each state.
-Policy is : for each combination of cars at Locations A and B (a state $(x, y)$), the policy suggests how many cars should be moved overnight between the two locations.
+Policy is : for each combination of cars at Locations A and B (a state $`(x, y)`$), the policy suggests how many cars should be moved overnight between the two locations.
 Z value represents the number of cars to be moved overnight between the two locations for the given state. 
-	Positive value means moving cars from Location B to Location A. 
-	Negative value means moving cars from Location A to Location B.
-	Zero value means no cars are moved between the two locations.
+- Positive value means moving cars from Location B to Location A. 
+- Negative value means moving cars from Location A to Location B.
+- Zero value means no cars are moved between the two locations.
 Rental demand follows Poisson distribution. Means of 3 for location A, means of 4 for location B.
 Cars returned according to a Poisson distribution. Means of 3 for location A, means of 2 for location B.
 Cost: moving cars costs 2$
