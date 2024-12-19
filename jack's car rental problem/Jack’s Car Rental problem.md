@@ -90,7 +90,7 @@ To solve the problem, you need to carefully compute the right-hand side of these
    - Decreasing $i'$ and $j'$ by the rentals that actually took place.
    - Adding returned cars according to $Y_1$ and $Y_2$.
    
-   More precisely, the distribution of $s'$ is:$$P(i'', j'' | s,a) = \sum_{r_1=0}^{\infty}\sum_{r_2=0}^{\infty}\sum_{q_1=0}^{\infty}\sum_{q_2=0}^{\infty} P(X_1=q_1)P(X_2=q_2)P(Y_1=r_1)P(Y_2=r_2) \cdot \mathbb{I}[i'' = i' - \min(i',q_1) + r_1]\mathbb{I}[j'' = j' - \min(j',q_2) + r_2]$$
+   More precisely, the distribution of $s'$ is:$`P(i'', j'' | s,a) = \sum_{r_1=0}^{\infty}\sum_{r_2=0}^{\infty}\sum_{q_1=0}^{\infty}\sum_{q_2=0}^{\infty} P(X_1=q_1)P(X_2=q_2)P(Y_1=r_1)P(Y_2=r_2) \cdot \mathbb{I}[i'' = i' - \min(i',q_1) + r_1]\mathbb{I}[j'' = j' - \min(j',q_2) + r_2]`$
    While this looks complicated, many terms vanish because the indicator functions ensure that $i''$ and $j''$ match the computed outcome. In practice, computations are done by enumerating feasible ranges and using efficient precomputed Poisson probabilities. Often, the state space and Poisson probabilities are truncated to avoid infinite sums.
 >[!tip]
 >In Detail:
