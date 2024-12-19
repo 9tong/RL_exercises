@@ -17,3 +17,4 @@ some notes of my RL learning, some exercises
 - [x] Lunar Landing(PPO)
 - [x] Grid World
   - [x] Q-learning 
+- [x] Jack's Car Rental
