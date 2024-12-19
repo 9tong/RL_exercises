@@ -55,20 +55,21 @@ The "Jack’s Car Rental" problem, as described in Sutton and Barto’s "Reinfor
   Each car rented out yields a certain reward (e.g., \$10 per rental). The expected number of rentals depends on the Poisson-distributed customer demands at each location.
 
 - **Transition Probabilities:**  
-  The number of requests at each location is Poisson-distributed:$$P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}$$
+  The number of requests at each location is Poisson-distributed:
+  $P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}$
   Here, $\lambda$ is the parameter of the Poisson distribution. For location 1, let the request rate be $\lambda_1$, and for location 2, $\lambda_2$. Similarly, the number of returned cars at each location follows its own Poisson distribution with given parameters (e.g., $\lambda_{1r}$ and $\lambda_{2r}$ for returns). 
 
 ## The Bellman Expectation and Optimality Equations
 For a given policy $\pi$, the state-value function $V^\pi(s)$ must satisfy the Bellman expectation equation:
-$$V^\pi(s) = \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V^\pi(s')]$$
+$`V^\pi(s) = \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V^\pi(s')]`$
 For the *optimal* policy $\pi^*$ and *optimal* value function $V^*$, we have the Bellman optimality equation:
-$$V^*(s) = \max_{a} \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V^*(s')]$$
+$`V^*(s) = \max_{a} \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V^*(s')]`$
 ## Computing the Expected Returns and Transitions
 To solve the problem, you need to carefully compute the right-hand side of these equations. Consider a single state-action pair $(s, a)$:
 1. **Adjust State for Action:**  
    After choosing action $a$ , suppose the initial state is $s=(i,j)$. The new intermediate state after the move is:
-	1. $i' = i - a \quad\text{(cars left at location 1 after move)}$
-	2. $j' = j + a \quad\text{(cars left at location 2 after move)}$
+	1. $`i' = i - a \quad\text{(cars left at location 1 after move)}`$
+	2. $`j' = j + a \quad\text{(cars left at location 2 after move)}`$
 	3. We must ensure $0 \leq i' \leq n$ and $0 \leq j' \leq n$, suppose $|n| = 5$
 
 2. **Calculate Immediate Costs/Rewards for the Action:**
@@ -76,9 +77,9 @@ To solve the problem, you need to carefully compute the right-hand side of these
    - This will reduce the net reward obtained that day.
 
 3. **Expected Rentals (Revenue) from the Next Morning:**
-   The number of cars requested at location 1 is a Poisson random variable, say $X_1 \sim \text{Poisson}(\lambda_1)$. The number of cars requested at location 2 is $X_2 \sim \text{Poisson}(\lambda_2)$.
-   The expected number of rentals at location 1 is:$E[\text{rentals}_1] = \sum_{k=0}^{\infty} \min(i', k) \frac{\lambda_1^k e^{-\lambda_1}}{k!}$
-   Similarly, for location 2: $E[\text{rentals}_2] = \sum_{k=0}^{\infty} \min(j', k) \frac{\lambda_2^k e^{-\lambda_2}}{k!}$
+   The number of cars requested at location 1 is a Poisson random variable, say $`X_1 \sim \text{Poisson}(\lambda_1)`$. The number of cars requested at location 2 is $`X_2 \sim \text{Poisson}(\lambda_2)`$.
+   The expected number of rentals at location 1 is:$`E[\text{rentals}_1] = \sum_{k=0}^{\infty} \min(i', k) \frac{\lambda_1^k e^{-\lambda_1}}{k!}`$
+   Similarly, for location 2: $`E[\text{rentals}_2] = \sum_{k=0}^{\infty} \min(j', k) \frac{\lambda_2^k e^{-\lambda_2}}{k!}`$
 
    Each rental yields a reward (e.g., \$10 per rental), so:
    $E[\text{rental reward}] = 10 (E[\text{rentals}_1] + E[\text{rentals}_2])$
