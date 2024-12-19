@@ -1,5 +1,3 @@
-#RL 
-
 # The Problem
 **Jack’s Car Rental problem** is a classic example used in Reinforcement Learning, particularly in the context of dynamic programming and value iteration. It appears in Sutton and Barto’s “Reinforcement Learning: An Introduction” (Chapter 4).
 Jack’s Car Rental problem is a well-known benchmark that shows how RL methods can handle decision-making over time in uncertain, stochastic environments.
